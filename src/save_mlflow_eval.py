@@ -80,7 +80,9 @@ if __name__ == "__main__":
     print("Registering the model via MLFlow")
     # https://www.mlflow.org/docs/latest/python_api/mlflow.pytorch.html#mlflow.pytorch.save_model
     # https://github.com/pytorch/pytorch/issues/18325#issuecomment-600457228
+    # This hack is critical. Without it, the model mlflow loads doesn't know something important.
     scripted_pytorch_model = torch.jit.script(net)
+    # It sneakly register the model to Azure ML Models. You can check it in Azure ML Studio.
     mlflow.pytorch.log_model(
         pytorch_model=scripted_pytorch_model,
         artifact_path=args.registered_model_name,
