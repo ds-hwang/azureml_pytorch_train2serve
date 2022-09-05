@@ -5,15 +5,10 @@ import torch.optim as optim
 import torchvision
 import torchvision.transforms as transforms
 from model import Net
-import mlflow
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        '--data_path',
-        type=str,
-        help='Path to the training data'
-    )
     parser.add_argument(
         '--learning_rate',
         type=float,
@@ -33,21 +28,18 @@ if __name__ == "__main__":
         help='ckpt path'
     )
     args = parser.parse_args()
-    print("===== DATA =====")
-    print("DATA PATH: " + args.data_path)
-    print("LIST FILES IN DATA PATH...")
-    print(os.listdir(args.data_path))
-    print("================")
     # prepare DataLoader for CIFAR10 data
+
+    # download CIFAR 10 data
     transform = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
     ])
     trainset = torchvision.datasets.CIFAR10(
-        root=args.data_path,
+        root='./data',
         train=True,
-        download=False,
-        transform=transform,
+        download=True,
+        transform=torchvision.transforms.ToTensor()
     )
     trainloader = torch.utils.data.DataLoader(
         trainset,
@@ -81,7 +73,6 @@ if __name__ == "__main__":
             running_loss += loss.item()
             if i % 2000 == 1999:
                 loss = running_loss / 2000
-                mlflow.log_metric('loss', loss)
                 print(f'epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}')
                 running_loss = 0.0
     print('Finished Training')
