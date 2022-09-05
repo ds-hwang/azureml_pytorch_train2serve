@@ -1,0 +1,14 @@
+name: pytorch-env
+channels:
+  - defaults
+  - pytorch
+dependencies:
+  - python=3.8.5
+  - pytorch
+  - imageio
+  - numpy
+  - torchvision
+  - pip:
+      - pytorch_lightning
+      - mlflow== 1.26.1
+      - azureml-mlflow==1.42.0
