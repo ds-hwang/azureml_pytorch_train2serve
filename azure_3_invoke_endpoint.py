@@ -35,7 +35,7 @@ if __name__ == "__main__":
         resource_group,
         workspace)
 
-    online_endpoint_name = 'torch-endpoint-6c2134e1'
+    online_endpoint_name = 'torch-endpoint-ef318eec'
     endpoint = ml_client.online_endpoints.get(name=online_endpoint_name)
     print(
         f'Endpint "{endpoint.name}" with provisioning state "{endpoint.provisioning_state}" is retrieved'

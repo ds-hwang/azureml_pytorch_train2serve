@@ -46,6 +46,7 @@ if __name__ == "__main__":
 
     # Creating a unique name for the endpoint
     online_endpoint_name = "torch-endpoint-" + str(uuid.uuid4())[:8]
+    # online_endpoint_name = 'torch-endpoint-d9994c4c'
 
     # create an online endpoint
     endpoint = ManagedOnlineEndpoint(

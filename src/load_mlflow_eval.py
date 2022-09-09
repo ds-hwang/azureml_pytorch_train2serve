@@ -44,7 +44,8 @@ if __name__ == "__main__":
 
     print('Loading the model')
     # https://www.mlflow.org/docs/latest/python_api/mlflow.pytorch.html#mlflow.pytorch.save_model
-    net = mlflow.pytorch.load_model(args.model_uri)
+    with mlflow.start_run() as run:
+        net = mlflow.pytorch.load_model(args.model_uri)
 
     with torch.no_grad():
         outputs = net(pt_img)

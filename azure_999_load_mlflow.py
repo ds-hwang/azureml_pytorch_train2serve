@@ -40,8 +40,7 @@ if __name__ == "__main__":
 
     # the key here should match the key passed to the command
     registered_model_name = "pytorch_eval_model"
-    # https://ml.azure.com/runs/sweet_hook_4rznd64m1q?wsid=/subscriptions/e4008d0d-d6b9-4d84-b0d6-2e1cb9cfa8e8/resourceGroups/luxtella-rg/providers/Microsoft.MachineLearningServices/workspaces/test&tid=8a66840e-ffed-4d6e-aa42-dbf41ee9332c
-    model_uri = "azureml://locations/eastus2/workspaces/4af6c6f7-ec2c-4cc2-8997-b543ace3c7ea/models/azureml_sweet_hook_4rznd64m1q_output_mlflow_log_model_-54946137/versions/1"
+    model_uri = "azureml://locations/eastus2/workspaces/4af6c6f7-ec2c-4cc2-8997-b543ace3c7ea/models/azureml_dreamy_panda_dmxq3mk535_output_mlflow_log_model_-409735621/versions/1"
     my_job_inputs = {
         "model_uri": Input(type=AssetTypes.MLFLOW_MODEL, path=model_uri),
     }
